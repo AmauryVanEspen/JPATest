@@ -7,33 +7,44 @@
 package jpatest.entity;
 
 import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author admin
  */
 @Entity
-public class message implements Serializable {
+public class Message implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long              id;
-    private String            nom;
+    
+    @Column(nullable = false,length = 64)
+    private String            titre;
+
+    @Column(length = 4096)
     private String            texte;
 
+    @Temporal(TemporalType.DATE)
+    private Date              dateDeCreation;
+    
     @Override
     public boolean equals(Object object) {
 
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof message)) {
+        if (!(object instanceof Message)) {
             return false;
         }
 
-        message other = (message) object;
+        Message other = (Message) object;
 
         if (((this.id == null) && (other.id != null)) || ((this.id != null) &&!this.id.equals(other.id))) {
             return false;
@@ -66,12 +77,12 @@ public class message implements Serializable {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getTitre() {
+        return titre;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setTitre(String titre) {
+        this.titre = titre;
     }
 
     public String getTexte() {

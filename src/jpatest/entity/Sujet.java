@@ -7,6 +7,7 @@
 package jpatest.entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,23 +18,27 @@ import javax.persistence.Id;
  * @author admin
  */
 @Entity
-public class sujet implements Serializable {
+public class Sujet implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long              id;
+    
+    @Column(nullable = false,length = 64)
     private String            nom;
+
+    @Column(length = 4096)
     private String            texte;
 
     @Override
     public boolean equals(Object object) {
 
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof sujet)) {
+        if (!(object instanceof Sujet)) {
             return false;
         }
 
-        sujet other = (sujet) object;
+        Sujet other = (Sujet) object;
 
         if (((this.id == null) && (other.id != null)) || ((this.id != null) &&!this.id.equals(other.id))) {
             return false;
