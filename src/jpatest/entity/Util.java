@@ -7,11 +7,16 @@
 package jpatest.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -19,6 +24,13 @@ import javax.persistence.Id;
  */
 @Entity
 public class Util implements Serializable {
+    
+    public enum UtilType { // Majuscule, c’est un type de donnée !
+        NORMAL,
+        MODERATEUR,
+        ADMIN
+    }
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,7 +41,13 @@ public class Util implements Serializable {
 
     @Column(nullable = false, length = 32)
     private String            mdp;
+    
+    @Temporal(TemporalType.DATE)
+    private Date              dateDeCreation;
 
+    @Enumerated(EnumType.STRING) // Par défaut, EnumType.ORDINAL
+    private UtilType utilType;
+    
     @Override
     public boolean equals(Object object) {
 

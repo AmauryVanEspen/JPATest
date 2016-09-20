@@ -3,9 +3,11 @@
   <persistence-unit name="PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>jpatest.entity.Util</class>
-    <class>jpatest.entity.categorie</class>
-    <class>jpatest.entity.sujet</class>
-    <class>jpatest.entity.message</class>
+    <class>jpatest.entity.Categorie</class>
+    <class>jpatest.entity.Message</class>
+    <class>jpatest.entity.Sujet</class>
+    <class>jpatest.entity.Employe</class>
+    <class>jpatest.entity.Employeur</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
       <property name="javax.persistence.jdbc.user" value="app"/>

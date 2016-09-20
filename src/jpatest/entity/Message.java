@@ -7,14 +7,11 @@
 package jpatest.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 /**
  *
@@ -32,9 +29,6 @@ public class Message implements Serializable {
 
     @Column(length = 4096)
     private String            texte;
-
-    @Temporal(TemporalType.DATE)
-    private Date              dateDeCreation;
     
     @Override
     public boolean equals(Object object) {
